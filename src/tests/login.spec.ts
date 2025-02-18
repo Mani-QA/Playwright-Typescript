@@ -9,7 +9,7 @@ test.describe('Login Functionality', () => {
     loginPage = new LoginPage(page);
   });
 
-  test('should login successfully with valid credentials', async () => {
+  test('should login successfully with valid credentials', async ({ page }) => {
     await loginPage.login(
       TestConfig.credentials.standardUser.username,
       TestConfig.credentials.standardUser.password
@@ -19,7 +19,7 @@ test.describe('Login Functionality', () => {
     await expect(page).toHaveURL('/inventory.html');
   });
 
-  test('should show error message with locked out user', async () => {
+  test('should show error message with locked out user', async ({ page }) => {
     await loginPage.login(
       TestConfig.credentials.lockedOutUser.username,
       TestConfig.credentials.lockedOutUser.password
